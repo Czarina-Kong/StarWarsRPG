@@ -8,12 +8,69 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
+	<div class="container">
+	<h1>Star Wars RPG!</h1>
+	<img src="">
+	<h2>Choose Your Character to Begin</h2>
+
+		<div class="row">
+			<!-- Character Options -->
+			<div id="charOptions">
+				<div class="col-md-2 thumbnail" id="Obi1">
+					<p>Obi-Wan Kenobi</p>
+					<img src="./assets/images/obi1.png" alt="Obi-Wan Kenobi" style="width: 100px; height: 130px;">
+					<p>120</p>
+				</div>
+				<div class="col-md-2 thumbnail" id="Luke">
+					<p>Luke Skywalker</p>
+					<img src="./assets/images/luke.png" alt="Luke Skywalker" style="width: 100px; height: 130px;">
+					<p>100</p>
+				</div>
+				<div class="col-md-2 thumbnail" id="DarthS">
+					<p>Darth Sidious</p>
+					<img src="./assets/images/darths.jpg" alt="Darth Sidous" style="width: 100px; height: 130px;">
+					<p>150</p>
+				</div>
+				<div class="col-md-2 thumbnail" id="DarthM">
+					<p>Darth Maul</p>
+					<img src="./assets/images/darthm.png" alt="Darth Maul" style="width: 100px; height: 130px;">
+					<p>180</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<!-- Selected Character -->
+			<div id="charSelected">
+				<h2>Your Character</h2>
+			</div>
+			<!-- Enemies Options -->
+			<div id="enemyOptions">
+				<h2>Enemies Available To Attack</h2>
+			</div>
+			<!-- Attack Button -->
+			<div id="fight">
+				<h2>Fight Section</h2>
+				<button id="attack">Attack</button>
+			</div>
+			<!-- Selected Enemy -->
+			<div id="defender">
+				<h2>Defender</h2>
+			</div>
+			<!-- Status -->
+			<div id="status">
+				<div id="messageDiv"></div>
+				<button id="restart">Restart</button>
+			</div>
+		</div>
+
+	</div>
 
 
 
 
 
-	
+
+
 <!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script type="text/javascript" src = "assets/js/game.js"></script>
