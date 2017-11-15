@@ -51,10 +51,28 @@ var gameOver = false        //is the game over
 //reset character value to global object variable
 $(document).ready(function(){
   $('#restart').hide()
-
+  $('#Obi1').on('click', function (){
+    if(characterChosen == false){
+      $('#status').empty()
+      function resetCharacter(c) {
+        character.name = c.name
+        character.health = c.health
+        character.attack = c.attack
+        character.powerUp = c.powerUp
+      }
+      resetCharacter(obi1)
+      characterChosen = true
+      $('#charSelected').append(this)
+    }
+  })
 })
 
-
+function resetDefender(d){
+  defender.name = d.name
+  defender.health = d.health
+  defender.attack = d.attack
+  defender.powerUp = d.powerUp
+}
 
 //when clicked on
 //and other characters move to enemyOptions div
