@@ -1,4 +1,15 @@
 body {
-	background: url('../images/background.jpg') no-repeat center fixed;
+	background: url('../images/background.png') no-repeat center fixed;
+}
+
+p {
+	text-align: center;
+}
+
+#Obi1:hover,
+#Luke:hover,
+#DarthS:hover,
+#DarthM:hover{
+	opacity: 0.8;
 }
 
