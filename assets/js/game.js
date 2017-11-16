@@ -1,31 +1,26 @@
-//let's make some globals
-
+//let's make some global vars
 var character = {}  //store user's character
 var defender = {}   //store user's defender
 
 //character objects and their properties
-
 var obi1 = {              //object
   name: 'Obi-Wan Kenobi', //property: 'value'
   health: 120,
   attack: 8,
   powerUp: 8,
 }
-
 var luke = {
   name: 'Luke Skywalker',
   health: 100,
   attack: 5,
   powerUp: 5,
 }
-
 var darthS = {
   name: 'Darth Sidious',
   health: 150,
   attack: 20,
   powerUp: 20,
 }
-
 var darthM = {
   name: 'Darth Maul',
   health: 150,
@@ -34,129 +29,135 @@ var darthM = {
 }
 
 //counters
-enemies = 3
+enemies = 3 //defeat 3 enemies to win game
 
-//let's set some booleans
-
-var charChosen = false //did user choose character
+//let's set some booleans for our conditionals
+var charChosen = false      //did user choose character
 var defenderChosen = false  //did user choose defender
 var gameOver = false        //is the game over
 
-
-
-
-
-//make page ready to run JS
-//hide restart button
-//determine user character
-//reset character
-function resetCharacter(c) {
+//let's make some global functions
+function resetCharacter(c) {                  //set character stats to chosen Character stats
   character.name = c.name
   character.health = c.health
   character.attack = c.attack
   character.powerUp = c.powerUp
 }
-function relocateEnemies(){
-  $('#enemyOptions').append($('#charOptions'))
+function relocateEnemies(){                   //move remaining characters to chooseEnemy div
+  $('.charOption').removeClass('charOption').addClass('enemyOption')
+  $('#chooseEnemy').append($('.enemyOption'))
 }
-function resetDefender(d) {
+function resetDefender(d) {                   //set defender stats to chosen Defender stats
   defender.name = d.name
   defender.health = d.health
   defender.attack = d.attack
   defender.powerUp = d.powerUp
 }
-//function to make chosen character move to charSelected div
-//reset character value to global object variable
-//when clicked on
-//and other characters move to enemyOptions div
-//prompt user to select an enemy in message div
-//function to make chosen enemy move to defender div
-//reset defender value to global object variable
-//move other characters to enemyOptions div
-//when defender chosen by click
-//prompt user to press attack button
+
+
+//Game Time!
+//make page ready for js
 $(document).ready(function(){
-  $('#restart').hide()
-  $('#Obi1').on('click', function (){
-    if(charChosen == false){
-      $('#status').empty()
-      resetCharacter(obi1)
-      charChosen = true
-      $('#Obi1').addClass('charFight')
-      $('#charSelected').append($('#Obi1'))
-      relocateEnemies()
-    } else if ((charChosen==true) && (defenderChosen==false)) {
-      $('#status').empty()
-      resetDefender(obi1)
-      defenderChosen = true
-      $('#Obi1').addClass('defenderFight')
-      $('#defender').append($('#Obi1'))
+
+  $('#restart').hide()                                          //hide reset button
+  $('#Obi1').on('click', function (){                           //when Obi1 is clicked
+
+    if(charChosen == false){                                    //if char not chosen
+      $('#status').empty()                                      //display empty status div
+      resetCharacter(obi1)                                      //set Obi1 properties to char object
+      $('#begin').hide()
+      $('#Obi1').removeClass('charOption').addClass('charFight')//assign new class to Obi1
+      $('#charSelected').append($('#Obi1'))                     //move Obi1 to charSelected div
+      relocateEnemies()                                         //move remaining characters to chooseEnemy div
+      charChosen = true                                         //communicate that char is chosen
+
+    } else if ((charChosen==true) && (defenderChosen==false)) { //if char chosen and defender not chosen
+      $('#status').empty()                                      //clear status
+      resetDefender(obi1)                                       //set Obi1 properties to defender object
+      $('#Obi1').addClass('defenderFight')                      //assign new class to Obi1
+      $('#defender').append($('#Obi1'))                         //move Obi to defender div
+      defenderChosen = true                                     //communicate that defender is chosen
     } 
   })
+
   $('#Luke').on('click', function (){
     if(charChosen == false){
       $('#status').empty()
       resetCharacter(luke)
-      charChosen = true
-      $('#Luke').addClass('charFight')
+      $('#Luke').removeClass('charOption').addClass('charFight')
       $('#charSelected').append($('#Luke'))
       relocateEnemies()
+      charChosen = true
     } else if ((charChosen==true) && (defenderChosen==false)) {
       $('#status').empty()
       resetDefender(luke)
-      defenderChosen = true
       $('#Luke').addClass('defenderFight')
       $('#defender').append($('#Luke'))
+      defenderChosen = true
     } 
   })
   $('#DarthS').on('click', function (){
     if(charChosen == false){
       $('#status').empty()
       resetCharacter(darthS)
-      charChosen = true
-      $('#DarthS').addClass('charFight')
+      $('#DarthS').removeClass('charOption').addClass('charFight')
       $('#charSelected').append($('#DarthS'))
       relocateEnemies()
+      charChosen = true
     } else if ((charChosen==true) && (defenderChosen==false)) {
       $('#status').empty()
       resetDefender(darthS)
-      defenderChosen = true
       $('#DarthS').addClass('defenderFight')
       $('#defender').append($('#DarthS'))
+      defenderChosen = true
     } 
   })
   $('#DarthM').on('click', function (){
     if(charChosen == false){
       $('#status').empty()
       resetCharacter(darthM)
-      charChosen = true
-      $('#DarthM').addClass('charFight')
+      $('#DarthM').removeClass('charOption').addClass('charFight')
       $('#charSelected').append($('#DarthM'))
       relocateEnemies()
+      charChosen = true
     } else if ((charChosen==true) && (defenderChosen==false)) {
       $('#status').empty()
       resetDefender(darthM)
-      defenderChosen = true
       $('#DarthM').addClass('defenderFight')
       $('#defender').append($('#DarthM'))
+      defenderChosen = true
     } 
   })
-//function to subtract chosen character powerUp from chosen enemy health
-//subtract defender counter powerUp from chosen character health
-//if character health < enemy health, player looses
-//prompt player to play again
-//if character health > enemy health, prompt player to choose another enemy
-//if character health > enemy health and no enemies left, player wins
-//alert player they win and prompt to play again
+
+//when attack button clicked
+//if char and defender chosen and game is not over
+  //calculate character attack on defender
+  //update defender health in html and status div
+  //powerup character attack
+        //if defender not defeated
+          //calculate counterattack
+          //update char health in html
+                //if char not defeated--update status div
+                //else--you lose
+        //else
+          //update enemy counter
+          //hide defeated defender
+          //communicate defender is not chosen
+          //update status
+                //if no more enemies--game over
+//else if char not chosen and game not over
+  //update status
+//else if defender chosen and game over
+  //update status
   $('#attack').on('click', function(){
     if (charChosen && defenderChosen && !gameOver) {
       defender.health = defender.health - character.attack
-//code to change health???????????????????????????????????
+      $('.defenderFight').html(defender.health)
       $('#status').html('<p>You attacked ' + defender.name + ' for ' + character.attack + ' damage.')
       character.attack = character.attack + character.powerUp
       if(defender.health > 0){
         $(character.health = character.health - defender.attack)
-//code to change health???????????????????????????????????
+        $('.charFight').html(character.health)
         if(character.health > 0) {
           $('#status').append('<p>' + defender.name + ' counterattacked for ' + defender.attack + ' damage.')
         } else {
@@ -166,9 +167,9 @@ $(document).ready(function(){
         }
       } else {
         enemies--
+        $('.defenderFight').hide()
         defenderChosen = false
         $('#status').html('<p>You have defeated ' + defender.name +'. Choose another enemy.')
-        $('.defenderFight').hide()
         if (enemies===0) {
           gameOver = true
           $('#status').html('<p>The force is strong with you.<p>Play again?')
@@ -181,12 +182,28 @@ $(document).ready(function(){
       $('#status').html('<p>Choose enemy you must.')
     }
   })
+//function to restart game
+  $('#restart').on('click',function(){
+    $('#Obi1').html(obi1.health)          //reset health WRONG!!!
+    $('#Luke').html(luke.health)
+    $('#DarthS').html(darthS.health)
+    $('#DarthM').html(darthM.health)
+    
+    $('.thumbnail').removeClass('charFight defenderFight enemyOption').addClass('charOption').show()
+    $('#chooseChar').append($('.charOption'))
 
 
+    $('#restart').hide()
+    $('#status').empty()
 
+    character = {}
+    defender = {}
 
-
+    charChosen = false
+    defenderChosen = false
+    gameOver = false
+    enemies = 3
+  })
 })
-//function to reset game
-//reset all character values global object variable
+
 

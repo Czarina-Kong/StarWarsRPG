@@ -3,34 +3,34 @@
 <head>
 	<title>Star Wars RPG</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 <!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
 	<div class="container">
 	<h1>Star Wars RPG!</h1>
-	<h2>Choose Your Character to Begin</h2>
+	<h2 id="begin">Choose Your Character to Begin</h2>
 
 		<div class="row">
 			<!-- Character Options -->
-			<div id="charOptions">
-				<div class="col-md-1 thumbnail" id="Obi1">
+			<div id="chooseChar">
+				<div class="col-md-1 thumbnail charOption" id="Obi1">
 					<p>Obi-Wan<br>Kenobi</p>
 					<img src="./assets/images/obi1.png" alt="Obi-Wan Kenobi" style="width: 100px; height: 130px;">
 					<p class="health">120</p>
 				</div>
-				<div class="col-md-1 thumbnail" id="Luke">
+				<div class="col-md-1 thumbnail charOption" id="Luke">
 					<p>Luke<br>Skywalker</p>
 					<img src="./assets/images/luke.png" alt="Luke Skywalker" style="width: 100px; height: 130px;">
 					<p class="health">100</p>
 				</div>
-				<div class="col-md-1 thumbnail" id="DarthS">
+				<div class="col-md-1 thumbnail charOption" id="DarthS">
 					<p>Darth<br>Sidious</p>
 					<img src="./assets/images/darths.jpg" alt="Darth Sidous" style="width: 100px; height: 130px;">
 					<p class="health">150</p>
 				</div>
-				<div class="col-md-1 thumbnail" id="DarthM">
+				<div class="col-md-1 thumbnail charOption" id="DarthM">
 					<p>Darth<br>Maul</p>
 					<img src="./assets/images/darthm.png" alt="Darth Maul" style="width: 100px; height: 130px;">
 					<p class="health">180</p>
@@ -45,7 +45,7 @@
 		</div>
 		<div class="row">
 			<!-- Enemies Options -->
-			<div id="enemyOptions">
+			<div id="chooseEnemy">
 				<h2>Enemies Available To Attack</h2>
 			</div>
 		</div>
