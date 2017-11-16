@@ -64,23 +64,6 @@ function resetDefender(d) {
 }
 //function to make chosen character move to charSelected div
 //reset character value to global object variable
-$(document).ready(function(){
-  $('#restart').hide()
-  $('#Obi1').on('click', function (){
-    if(charChosen == false){
-      $('#status').empty()
-      resetCharacter(obi1)
-      charChosen == true
-      $('#charSelected').append($('#Obi1'))
-      relocateEnemies()
-    } else if ((charChosen==true) && (defenderChosen==false)) {
-      resetDefender(obi1)
-      defenderChosen == true
-      $('#defender').append($('#Obi1'))
-    } 
-  })
-})
-
 //when clicked on
 //and other characters move to enemyOptions div
 //prompt user to select an enemy in message div
@@ -88,7 +71,70 @@ $(document).ready(function(){
 //reset defender value to global object variable
 //move other characters to enemyOptions div
 //when defender chosen by click
-//prompt user to press powerUp button
+//prompt user to press attack button
+$(document).ready(function(){
+  $('#restart').hide()
+  $('#Obi1').on('click', function (){
+    if(charChosen == false){
+      $('#status').empty()
+      resetCharacter(obi1)
+      charChosen = true
+      $('#charSelected').append($('#Obi1'))
+      relocateEnemies()
+    } else if ((charChosen==true) && (defenderChosen==false)) {
+      $('#messageDiv').empty();
+      resetDefender(obi1)
+      defenderChosen = true
+      $('#defender').append($('#Obi1'))
+    } 
+  })
+  $('#Luke').on('click', function (){
+    if(charChosen == false){
+      $('#status').empty()
+      resetCharacter(luke)
+      charChosen = true
+      $('#charSelected').append($('#Luke'))
+      relocateEnemies()
+    } else if ((charChosen==true) && (defenderChosen==false)) {
+      $('#messageDiv').empty();
+      resetDefender(luke)
+      defenderChosen = true
+      $('#defender').append($('#Luke'))
+    } 
+  })
+  $('#DarthS').on('click', function (){
+    if(charChosen == false){
+      $('#status').empty()
+      resetCharacter(darthS)
+      charChosen = true
+      $('#charSelected').append($('#DarthS'))
+      relocateEnemies()
+    } else if ((charChosen==true) && (defenderChosen==false)) {
+      $('#messageDiv').empty();
+      resetDefender(darthS)
+      defenderChosen = true
+      $('#defender').append($('#DarthS'))
+    } 
+  })
+  $('#DarthM').on('click', function (){
+    if(charChosen == false){
+      $('#status').empty()
+      resetCharacter(darthM)
+      charChosen = true
+      $('#charSelected').append($('#DarthM'))
+      relocateEnemies()
+    } else if ((charChosen==true) && (defenderChosen==false)) {
+      $('#messageDiv').empty();
+      resetDefender(darthM)
+      defenderChosen = true
+      $('#defender').append($('#DarthM'))
+    } 
+  })
+})
+
+
+
+
 
 //function to subtract chosen character powerUp from chosen enemy health
 //subtract defender counter powerUp from chosen character health
