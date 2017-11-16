@@ -35,7 +35,7 @@ var darthM = {
 
 //let's set some booleans
 
-var characterChosen = false //did user choose character
+var charChosen = false //did user choose character
 var defenderChosen = false  //did user choose defender
 var gameOver = false        //is the game over
 
@@ -47,32 +47,29 @@ var gameOver = false        //is the game over
 //hide restart button
 //determine user character
 //reset character
+function resetCharacter(c) {
+  character.name = c.name
+  character.health = c.health
+  character.attack = c.attack
+  character.powerUp = c.powerUp
+}
+function relocateEnemies(){
+  $('#enemyOptions').append($('#charOptions'))
+}
 //function to make chosen character move to charSelected div
 //reset character value to global object variable
 $(document).ready(function(){
   $('#restart').hide()
   $('#Obi1').on('click', function (){
-    if(characterChosen == false){
+    if(charChosen == false){
       $('#status').empty()
-      function resetCharacter(c) {
-        character.name = c.name
-        character.health = c.health
-        character.attack = c.attack
-        character.powerUp = c.powerUp
-      }
       resetCharacter(obi1)
-      characterChosen = true
-      $('#charSelected').append(this)
+      charChosen == true
+      $('#charSelected').append($('#Obi1'))
+      relocateEnemies()
     }
   })
 })
-
-function resetDefender(d){
-  defender.name = d.name
-  defender.health = d.health
-  defender.attack = d.attack
-  defender.powerUp = d.powerUp
-}
 
 //when clicked on
 //and other characters move to enemyOptions div
@@ -93,6 +90,4 @@ function resetDefender(d){
 
 //function to reset game
 //reset all character values global object variable
-
-
 
