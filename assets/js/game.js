@@ -33,6 +33,9 @@ var darthM = {
   powerUp: 25,
 }
 
+//counters
+enemies = 3
+
 //let's set some booleans
 
 var charChosen = false //did user choose character
@@ -148,18 +151,35 @@ $(document).ready(function(){
   $('#attack').on('click', function(){
     if (charChosen && defenderChosen && !gameOver) {
       defender.health = defender.health - character.attack
-//code to change health ???????????????????????????????????
+//code to change health???????????????????????????????????
       $('#status').html('<p>You attacked ' + defender.name + ' for ' + character.attack + ' damage.')
       character.attack = character.attack + character.powerUp
       if(defender.health > 0){
         $(character.health = character.health - defender.attack)
-//code to change health ???????????????????????????????????
+//code to change health???????????????????????????????????
         if(character.health > 0) {
           $('#status').append('<p>' + defender.name + ' counterattacked for ' + defender.attack + ' damage.')
+        } else {
+          gameOver = true
+          $('#status').html("<p>You fail because you don't believe.")
+          $('#restart').show()
+        }
+      } else {
+        enemies--
+        defenderChosen = false
+        $('#status').html('<p>You have defeated ' + defender.name +'. Choose another enemy.')
+        $('.defenderFight').hide()
+        if (enemies===0) {
+          gameOver = true
+          $('#status').html('<p>The force is strong with you.<p>Play again?')
+          $('#restart').show()
         }
       }
-    } 
-
+    } else if (!charChosen && !gameOver) {
+      $('#status').html('<p>Choose game character you must.')
+    } else if (!defenderChosen && !gameOver){
+      $('#status').html('<p>Choose enemy you must.')
+    }
   })
 
 
