@@ -56,6 +56,12 @@ function resetCharacter(c) {
 function relocateEnemies(){
   $('#enemyOptions').append($('#charOptions'))
 }
+function resetDefender(d) {
+  character.name = d.name
+  character.health = d.health
+  character.attack = d.attack
+  character.powerUp = d.powerUp
+}
 //function to make chosen character move to charSelected div
 //reset character value to global object variable
 $(document).ready(function(){
@@ -67,7 +73,11 @@ $(document).ready(function(){
       charChosen == true
       $('#charSelected').append($('#Obi1'))
       relocateEnemies()
-    }
+    } else if ((charChosen==true) && (defenderChosen==false)) {
+      resetDefender(obi1)
+      defenderChosen == true
+      $('#defender').append($('#Obi1'))
+    } 
   })
 })
 
