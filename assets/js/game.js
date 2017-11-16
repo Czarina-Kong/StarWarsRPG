@@ -57,10 +57,10 @@ function relocateEnemies(){
   $('#enemyOptions').append($('#charOptions'))
 }
 function resetDefender(d) {
-  character.name = d.name
-  character.health = d.health
-  character.attack = d.attack
-  character.powerUp = d.powerUp
+  defender.name = d.name
+  defender.health = d.health
+  defender.attack = d.attack
+  defender.powerUp = d.powerUp
 }
 //function to make chosen character move to charSelected div
 //reset character value to global object variable
@@ -79,12 +79,14 @@ $(document).ready(function(){
       $('#status').empty()
       resetCharacter(obi1)
       charChosen = true
+      $('#Obi1').addClass('charFight')
       $('#charSelected').append($('#Obi1'))
       relocateEnemies()
     } else if ((charChosen==true) && (defenderChosen==false)) {
-      $('#messageDiv').empty();
+      $('#status').empty()
       resetDefender(obi1)
       defenderChosen = true
+      $('#Obi1').addClass('defenderFight')
       $('#defender').append($('#Obi1'))
     } 
   })
@@ -93,12 +95,14 @@ $(document).ready(function(){
       $('#status').empty()
       resetCharacter(luke)
       charChosen = true
+      $('#Luke').addClass('charFight')
       $('#charSelected').append($('#Luke'))
       relocateEnemies()
     } else if ((charChosen==true) && (defenderChosen==false)) {
-      $('#messageDiv').empty();
+      $('#status').empty()
       resetDefender(luke)
       defenderChosen = true
+      $('#Luke').addClass('defenderFight')
       $('#defender').append($('#Luke'))
     } 
   })
@@ -107,12 +111,14 @@ $(document).ready(function(){
       $('#status').empty()
       resetCharacter(darthS)
       charChosen = true
+      $('#DarthS').addClass('charFight')
       $('#charSelected').append($('#DarthS'))
       relocateEnemies()
     } else if ((charChosen==true) && (defenderChosen==false)) {
-      $('#messageDiv').empty();
+      $('#status').empty()
       resetDefender(darthS)
       defenderChosen = true
+      $('#DarthS').addClass('defenderFight')
       $('#defender').append($('#DarthS'))
     } 
   })
@@ -121,21 +127,17 @@ $(document).ready(function(){
       $('#status').empty()
       resetCharacter(darthM)
       charChosen = true
+      $('#DarthM').addClass('charFight')
       $('#charSelected').append($('#DarthM'))
       relocateEnemies()
     } else if ((charChosen==true) && (defenderChosen==false)) {
-      $('#messageDiv').empty();
+      $('#status').empty()
       resetDefender(darthM)
       defenderChosen = true
+      $('#DarthM').addClass('defenderFight')
       $('#defender').append($('#DarthM'))
     } 
   })
-})
-
-
-
-
-
 //function to subtract chosen character powerUp from chosen enemy health
 //subtract defender counter powerUp from chosen character health
 //if character health < enemy health, player looses
@@ -143,7 +145,28 @@ $(document).ready(function(){
 //if character health > enemy health, prompt player to choose another enemy
 //if character health > enemy health and no enemies left, player wins
 //alert player they win and prompt to play again
+  $('#attack').on('click', function(){
+    if (charChosen && defenderChosen && !gameOver) {
+      defender.health = defender.health - character.attack
+//code to change health ???????????????????????????????????
+      $('#status').html('<p>You attacked ' + defender.name + ' for ' + character.attack + ' damage.')
+      character.attack = character.attack + character.powerUp
+      if(defender.health > 0){
+        $(character.health = character.health - defender.attack)
+//code to change health ???????????????????????????????????
+        if(character.health > 0) {
+          $('#status').append('<p>' + defender.name + ' counterattacked for ' + defender.attack + ' damage.')
+        }
+      }
+    } 
 
+  })
+
+
+
+
+
+})
 //function to reset game
 //reset all character values global object variable
 
