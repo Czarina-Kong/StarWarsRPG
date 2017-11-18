@@ -2,19 +2,9 @@ body {
 	background: url('../images/background.png') no-repeat center fixed;
 }
 
-@font-face {font-family:'STARWARS';
-	src:url("STARWARS.eot") format("eot"),
-		url("STARWARS.woff") format("woff"),
-		url("STARWARS.ttf") format("truetype"),
-		url("STARWARS.svg#STARWARS") format("svg");
-	font-weight:normal;
-	font-style:normal;
-}
-
 
 h1{
-	font-family: STARWARS;
-/*	color: yellow;*/
+	color: yellow;
 }
 
 
